@@ -277,18 +277,6 @@ section {
 }
 
 @media (min-width: 768px) {
-  .hero-depth-stage {
-    --card-height: 205px;
-    --card-width: 64%;
-    --front-x: 30%;
-    --back-y: 72px;
-    --side-x: 35%;
-    --side-y: 40px;
-    --hide-right-x: 30%;
-    --hide-left-x: -6%;
-    --hide-y: 78px;
-  }
-
   .hero-depth-card-front,
   .hero-depth-card-incoming {
     border-radius: 2rem;
@@ -297,20 +285,6 @@ section {
   .hero-depth-card-back,
   .hero-depth-card-outgoing {
     border-radius: 2rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero-depth-stage {
-    --card-height: 225px;
-    --card-width: 62%;
-    --front-x: 31%;
-    --back-y: 78px;
-    --side-x: 36%;
-    --side-y: 42px;
-    --hide-right-x: 31%;
-    --hide-left-x: -6%;
-    --hide-y: 82px;
   }
 }
 

@@ -38,9 +38,8 @@ export default function Hero() {
             Dog Boarding at <br className="md:hidden" />
             <span className="inline-block whitespace-nowrap">
               We Care Pets
-            </span>{" "}
-            in
-            Eraviperoor, Kerala
+            </span>
+            <span className="block md:inline"> in Eraviperoor, Kerala</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-7 text-[#1C1C1A]/74 md:text-lg md:leading-8">
             Safe dog boarding, day care, and short-term and long-term pet stays
@@ -62,7 +61,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div className="relative h-[205px] sm:h-[225px] md:h-[265px] lg:h-[285px]" data-reveal>
+        <div className="relative h-[205px] sm:h-[225px] md:h-[225px] lg:h-[225px]" data-reveal>
           <div className="hero-depth-stage relative h-full w-full">
             {heroImages.map((image, index) => (
               <div
