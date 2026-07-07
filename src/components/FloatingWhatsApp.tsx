@@ -1,40 +1,25 @@
-import { businessConfig } from "@/lib/business";
 import Image from "next/image";
+import SmoothAnchor from "./SmoothAnchor";
 
 export default function FloatingWhatsApp() {
-  if (!businessConfig.whatsappNumber) {
-    return (
-      <a
-        href="#contact"
-        aria-label="WhatsApp number coming soon"
-        className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#A9B8AD] text-xs font-black text-white shadow-[0_18px_36px_rgba(31,61,54,0.18)] md:h-16 md:w-16"
-      >
-        Soon
-      </a>
-    );
-  }
-
-  const href = `https://wa.me/${businessConfig.whatsappNumber}?text=${encodeURIComponent(
-    "Hi We Care Pets, I would like to ask about dog boarding.",
-  )}`;
-
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      aria-label="Chat with We Care Pets on WhatsApp"
-      className="fixed bottom-4 left-4 right-4 z-50 flex h-14 items-center justify-center gap-3 rounded-full bg-white px-4 text-sm font-black uppercase tracking-[0.08em] text-[#1F3D36] shadow-[0_18px_36px_rgba(37,211,102,0.28)] ring-1 ring-[#25D366]/20 transition hover:-translate-y-1 md:left-auto md:right-5 md:h-16 md:w-16 md:p-1 md:tracking-normal"
+    <SmoothAnchor
+      href="#booking"
+      aria-label="Go to booking form"
+      className="group fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-white p-2.5 shadow-[0_16px_34px_rgba(37,211,102,0.28),0_0_0_8px_rgba(37,211,102,0.08)] ring-1 ring-[#25D366]/30 transition hover:-translate-y-1 hover:shadow-[0_20px_42px_rgba(37,211,102,0.34),0_0_0_10px_rgba(217,144,61,0.12)] focus-visible:outline focus-visible:outline-4 focus-visible:outline-[#D9903D]/35 md:bottom-6 md:right-6 md:h-16 md:w-16"
     >
+      <span className="absolute inset-0 rounded-full bg-[#25D366]/20 opacity-0 transition group-hover:opacity-100" />
       <Image
         src="/images/we-care-pets/whatsapp-icon.png"
         alt=""
         aria-hidden
         width={256}
         height={256}
-        className="h-9 w-9 shrink-0 md:h-full md:w-full"
+        className="relative h-full w-full"
       />
-      <span className="md:hidden">Book on WhatsApp</span>
-    </a>
+      <span className="absolute -left-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#D9903D] text-[10px] font-black text-white shadow-[0_8px_18px_rgba(217,144,61,0.24)]">
+        +
+      </span>
+    </SmoothAnchor>
   );
 }

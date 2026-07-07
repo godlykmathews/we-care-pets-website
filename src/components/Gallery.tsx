@@ -1,37 +1,40 @@
-"use client";
-
 import { galleryItems } from "@/lib/siteData";
 import Image from "next/image";
 import SectionHeading from "./SectionHeading";
+
+const featuredGalleryItems = galleryItems.slice(0, 6);
 
 export default function Gallery() {
   return (
     <section
       id="gallery"
-      className="overflow-hidden border-t border-[#E8CFC5] bg-[#FFF1F0] px-4 py-14 shadow-[inset_0_18px_34px_rgba(217,144,61,0.07)] md:px-5 md:py-24"
+      className="paw-pattern overflow-hidden border-t border-[#E8DCCB] bg-[#FFF8EF] px-4 py-14 md:px-5 md:py-24"
     >
       <SectionHeading
         eyebrow="Gallery"
         title="Happy guests at We Care Pets"
         text="A glimpse of the dogs, cages, care spaces, and happy stays at We Care Pets."
       />
+
       <div
-        className="gallery-cycle-stage relative mx-auto mt-8 h-[300px] max-w-6xl md:h-[370px]"
+        className="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3"
         data-reveal
       >
-        {galleryItems.map((item, index) => (
+        {featuredGalleryItems.map((item, index) => (
           <figure
             key={item.src}
-            className={`gallery-cycle-card gallery-cycle-card-${index}`}
+            className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/80 bg-white shadow-[0_14px_30px_rgba(31,61,54,0.08)]"
           >
             <Image
               src={item.src}
               alt={item.alt}
-              width={520}
-              height={420}
-              className="gallery-cycle-image h-full w-full object-cover"
-              priority={index < 5}
+              width={900}
+              height={720}
+              sizes="(max-width: 768px) 50vw, 33vw"
+              className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]"
+              priority={index < 3}
             />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1F3D36]/20 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
           </figure>
         ))}
       </div>

@@ -1,84 +1,63 @@
 "use client";
 
 import Image from "next/image";
-
-const heroImages = [
-  {
-    src: "/images/we-care-pets/outdoor-cage-facility.webp",
-    alt: "Outdoor cage facility at We Care Pets",
-  },
-  {
-    src: "/images/we-care-pets/labrador-personal-care.webp",
-    alt: "Labrador receiving personal care at We Care Pets",
-  },
-  {
-    src: "/images/we-care-pets/husky-indoor-boarding-cage.webp",
-    alt: "Husky guest in an indoor boarding cage at We Care Pets",
-  },
-  {
-    src: "/images/we-care-pets/beagle-cuddle-care.webp",
-    alt: "Beagle guest receiving affectionate care at We Care Pets",
-  },
-  {
-    src: "/images/we-care-pets/golden-retriever-indoor-kennel.webp",
-    alt: "Golden retriever in a clean indoor kennel at We Care Pets",
-  },
-];
+import SmoothAnchor from "./SmoothAnchor";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="paw-pattern relative isolate overflow-hidden px-4 pb-12 pt-28 md:px-5 md:pb-20 md:pt-36"
+      className="paw-pattern relative isolate flex min-h-screen items-center overflow-hidden px-4 pb-14 pt-32 md:px-5 md:pb-20 md:pt-40"
     >
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(217,144,61,0.14),transparent_28%),radial-gradient(circle_at_86%_18%,rgba(107,143,113,0.18),transparent_30%)]" />
-      <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[0.95fr_0.9fr]">
-        <div className="min-w-0" data-reveal>
-          <h1 className="max-w-4xl text-4xl font-black leading-[1.04] text-[#1F3D36] md:text-6xl">
-            Dog Boarding at <br className="md:hidden" />
-            <span className="inline-block whitespace-nowrap">
-              We Care Pets
-            </span>
-            <span className="block md:inline"> in Eraviperoor, Kerala</span>
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(217,144,61,0.12),transparent_30%),radial-gradient(circle_at_88%_18%,rgba(107,143,113,0.17),transparent_34%)]" />
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+        <div className="min-w-0 space-y-7" data-reveal>
+          <h1 className="max-w-4xl text-5xl font-black leading-[1.02] text-[#1F3D36] md:text-7xl">
+            Dog Boarding at We Care Pets in Eraviperoor, Kerala
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-[#1C1C1A]/74 md:text-lg md:leading-8">
-            Safe dog boarding, day care, and short-term and long-term pet stays
-            with indoor and outdoor cage facilities, daily care, and over 25
-            years of hands-on pet care experience.
+          <p className="max-w-xl text-base leading-7 text-[#1C1C1A]/74 md:text-lg md:leading-8">
+            Experience peace of mind with supervised care, spacious indoor and
+            outdoor boarding areas, and steady updates while your dog stays with
+            us.
           </p>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <a
+          <div className="flex flex-col gap-3 pt-1 sm:flex-row">
+            <SmoothAnchor
               href="#booking"
-              className="rounded-full bg-[#1F3D36] px-6 py-4 text-center text-sm font-black uppercase tracking-[0.08em] text-white shadow-[0_16px_30px_rgba(31,61,54,0.20)] transition hover:-translate-y-0.5"
+              className="rounded-full bg-[#1F3D36] px-7 py-4 text-center text-sm font-black uppercase tracking-[0.08em] text-white shadow-[0_16px_30px_rgba(31,61,54,0.20)] transition hover:-translate-y-0.5"
             >
-              Book on WhatsApp
-            </a>
-            <a
+              Check Availability
+            </SmoothAnchor>
+            <SmoothAnchor
               href="#facilities"
-              className="rounded-full border border-[#1F3D36] bg-white/45 px-6 py-4 text-center text-sm font-black uppercase tracking-[0.08em] text-[#1F3D36] transition hover:bg-white"
+              className="rounded-full border border-[#1F3D36] bg-transparent px-7 py-4 text-center text-sm font-black uppercase tracking-[0.08em] text-[#1F3D36] transition hover:bg-[#1F3D36]/5"
             >
-              View Facilities
-            </a>
+              Explore Facilities
+            </SmoothAnchor>
           </div>
         </div>
-        <div className="relative h-[205px] sm:h-[225px] md:h-[225px] lg:h-[225px]" data-reveal>
-          <div className="hero-depth-stage relative h-full w-full">
-            {heroImages.map((image, index) => (
-              <div
-                key={image.src}
-                className={`hero-depth-card hero-cycle-card hero-cycle-card-${index}`}
-              >
-                <Image
-                  src={image.src}
-                  alt={index === 0 ? image.alt : ""}
-                  aria-hidden={index !== 0}
-                  width={1200}
-                  height={900}
-                  priority={index === 0}
-                  className="hero-depth-image h-full w-full object-cover"
-                />
-              </div>
-            ))}
+
+        <div
+          className="relative mx-auto h-[280px] w-full max-w-md sm:h-[340px] lg:h-[470px] lg:max-w-lg"
+          data-reveal
+        >
+          <div className="hero-organic-shadow absolute right-0 top-0 h-[78%] w-[72%] overflow-hidden rounded-[2rem]">
+            <Image
+              src="/images/we-care-pets/outdoor-cage-facility.webp"
+              alt="Outdoor boarding facility at We Care Pets"
+              width={1100}
+              height={900}
+              priority
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="hero-organic-shadow absolute bottom-4 left-0 h-[60%] w-[64%] overflow-hidden rounded-[2rem] border-4 border-[#FFF8EF]/80 sm:left-7 lg:bottom-8">
+            <Image
+              src="/images/we-care-pets/labrador-personal-care.webp"
+              alt="Labrador receiving personal care at We Care Pets"
+              width={1000}
+              height={820}
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </div>

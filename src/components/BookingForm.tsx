@@ -9,6 +9,7 @@ type BookingDetails = {
   phone: string;
   dogName: string;
   breedSize: string;
+  cagePreference: string;
   dropOffDate: string;
   pickUpDate: string;
   note: string;
@@ -19,10 +20,16 @@ const initialDetails: BookingDetails = {
   phone: "",
   dogName: "",
   breedSize: "",
+  cagePreference: "Not sure",
   dropOffDate: "",
   pickUpDate: "",
   note: "",
 };
+
+const fieldClass =
+  "w-full rounded-2xl border border-[#D8CDC0] bg-white px-4 py-4 text-base font-bold text-[#1C1C1A] outline-none transition placeholder:text-[#1C1C1A]/36 focus:border-[#6B8F71] focus:bg-white focus:shadow-[0_0_0_4px_rgba(107,143,113,0.14)]";
+
+const cagePreferences = ["Indoor", "Outdoor", "Not sure"];
 
 export function createWhatsAppMessage(details: BookingDetails) {
   return [
@@ -32,6 +39,7 @@ export function createWhatsAppMessage(details: BookingDetails) {
     `Phone: ${details.phone || "-"}`,
     `Dog Name: ${details.dogName || "-"}`,
     `Breed / Size: ${details.breedSize || "-"}`,
+    `Cage Preference: ${details.cagePreference || "-"}`,
     `Drop-off Date: ${details.dropOffDate || "-"}`,
     `Pick-up Date: ${details.pickUpDate || "-"}`,
     `Note: ${details.note || "-"}`,
@@ -61,72 +69,104 @@ export default function BookingForm() {
   }
 
   return (
-    <form className="space-y-4" onSubmit={handleSubmit}>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Owner name">
+    <form className="space-y-6" onSubmit={handleSubmit}>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label="Owner name" meta="Required">
           <input
             required
             value={details.ownerName}
             onChange={(event) => updateField("ownerName", event.target.value)}
-            className="input-field"
+            className={fieldClass}
             type="text"
-            placeholder="Your name"
+            placeholder="Your full name"
           />
         </Field>
-        <Field label="Phone number">
+        <Field label="Phone number" meta="Required">
           <input
             required
             value={details.phone}
             onChange={(event) => updateField("phone", event.target.value)}
-            className="input-field"
+            className={fieldClass}
             type="tel"
-            placeholder="Your mobile number"
+            placeholder="9446669982"
           />
         </Field>
-        <Field label="Dog name">
+        <Field label="Dog name" meta="Required">
           <input
             required
             value={details.dogName}
             onChange={(event) => updateField("dogName", event.target.value)}
-            className="input-field"
+            className={fieldClass}
             type="text"
-            placeholder="Bruno"
+            placeholder="Fido"
           />
         </Field>
-        <Field label="Breed / size">
+        <Field label="Breed / size" meta="Optional">
           <input
             value={details.breedSize}
             onChange={(event) => updateField("breedSize", event.target.value)}
-            className="input-field"
+            className={fieldClass}
             type="text"
-            placeholder="Labrador / medium"
+            placeholder="Golden Retriever / medium"
           />
         </Field>
-        <Field label="Drop-off date">
+        <Field label="Drop-off date" meta="Required">
           <input
             required
             value={details.dropOffDate}
             onChange={(event) => updateField("dropOffDate", event.target.value)}
-            className="input-field"
+            className={fieldClass}
             type="date"
           />
         </Field>
-        <Field label="Pick-up date">
+        <Field label="Pick-up date" meta="Required">
           <input
             required
             value={details.pickUpDate}
             onChange={(event) => updateField("pickUpDate", event.target.value)}
-            className="input-field"
+            className={fieldClass}
             type="date"
           />
         </Field>
       </div>
-      <Field label="Short note / special care">
+      <div className="space-y-3" role="radiogroup" aria-label="Cage preference">
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-sm font-black text-[#1F3D36]">Cage preference</p>
+          <span className="text-xs font-bold text-[#1C1C1A]/46">Optional</span>
+        </div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          {cagePreferences.map((preference) => {
+            const isSelected = details.cagePreference === preference;
+
+            return (
+              <label
+                key={preference}
+                className={`flex min-h-12 cursor-pointer select-none items-center justify-center rounded-full border px-5 py-3 text-center text-sm font-black transition active:scale-[0.98] ${
+                  isSelected
+                    ? "border-[#6B8F71] bg-[#6B8F71] text-white shadow-[0_10px_22px_rgba(107,143,113,0.18)]"
+                    : "border-[#D8CDC0] bg-white text-[#1F3D36] hover:border-[#6B8F71] hover:bg-[#6B8F71]/10"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="cagePreference"
+                  value={preference}
+                  checked={isSelected}
+                  onChange={() => updateField("cagePreference", preference)}
+                  className="sr-only"
+                />
+                {preference}
+              </label>
+            );
+          })}
+        </div>
+      </div>
+      <Field label="Short note / special care" meta="Optional">
         <textarea
           value={details.note}
           onChange={(event) => updateField("note", event.target.value)}
-          className="input-field min-h-24 resize-y"
-          placeholder="Food, medication, temperament, or anything important..."
+          className={`${fieldClass} min-h-28 resize-y`}
+          placeholder="Any allergies, medication, food notes, or special requirements?"
         />
       </Field>
       {!hasWhatsAppNumber ? (
@@ -134,23 +174,40 @@ export default function BookingForm() {
           WhatsApp number will be added soon.
         </p>
       ) : null}
-      <button
-        className="w-full rounded-full bg-[#25D366] px-6 py-4 text-base font-black text-white shadow-[0_16px_28px_rgba(37,211,102,0.20)] transition hover:-translate-y-0.5 hover:bg-[#20bd5a] disabled:cursor-not-allowed disabled:bg-[#A9B8AD] disabled:shadow-none disabled:hover:translate-y-0"
-        disabled={!hasWhatsAppNumber}
-        type="submit"
-      >
-        {hasWhatsAppNumber
-          ? "Send Enquiry on WhatsApp"
-          : "WhatsApp Number Coming Soon"}
-      </button>
+      <div className="pt-2">
+        <button
+          className="w-full rounded-2xl bg-[#D9903D] px-6 py-5 text-base font-black text-white shadow-[0_18px_34px_rgba(217,144,61,0.24)] transition hover:-translate-y-0.5 hover:bg-[#C67E2D] disabled:cursor-not-allowed disabled:bg-[#A9B8AD] disabled:shadow-none disabled:hover:translate-y-0"
+          disabled={!hasWhatsAppNumber}
+          type="submit"
+        >
+          {hasWhatsAppNumber
+            ? "Send Enquiry on WhatsApp"
+            : "WhatsApp Number Coming Soon"}
+        </button>
+        <p className="mt-4 text-center text-xs font-bold leading-5 text-[#1C1C1A]/55">
+          No online payment required. We Care Pets will confirm availability and
+          pricing directly.
+        </p>
+      </div>
     </form>
   );
 }
 
-function Field({ label, children }: { label: string; children: ReactNode }) {
+function Field({
+  label,
+  meta,
+  children,
+}: {
+  label: string;
+  meta: string;
+  children: ReactNode;
+}) {
   return (
-    <label className="block text-xs font-black uppercase tracking-[0.08em] text-[#1F3D36]">
-      <span className="mb-2 block">{label}</span>
+    <label className="block">
+      <span className="mb-2 flex items-center justify-between gap-3">
+        <span className="text-sm font-black text-[#1F3D36]">{label}</span>
+        <span className="text-xs font-bold text-[#1C1C1A]/46">{meta}</span>
+      </span>
       {children}
     </label>
   );

@@ -1,5 +1,6 @@
 import { business, navItems } from "@/lib/siteData";
 import Image from "next/image";
+import SmoothAnchor from "./SmoothAnchor";
 
 export default function Navbar() {
   return (
@@ -14,7 +15,7 @@ export default function Navbar() {
       </div>
       <nav className="border-b border-[#E8DCCB]/80 bg-[#FFF8EF]/90 px-4 py-3 shadow-sm backdrop-blur-xl md:px-5 md:py-4">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-5">
-          <a
+          <SmoothAnchor
             href="#home"
             className="flex shrink-0 items-center gap-2 text-lg font-black text-[#1F3D36] md:text-xl"
           >
@@ -27,25 +28,25 @@ export default function Navbar() {
               className="h-12 w-auto md:h-14"
             />
             <span>We Care Pets</span>
-          </a>
+          </SmoothAnchor>
           <div className="hidden items-center gap-6 text-sm font-bold text-[#1C1C1A]/72 lg:flex">
             {navItems.map((item) => (
-              <a
+              <SmoothAnchor
                 key={item.href}
                 href={item.href}
                 className="transition hover:text-[#1F3D36]"
               >
                 {item.label}
-              </a>
+              </SmoothAnchor>
             ))}
           </div>
           <div className="flex items-center gap-3">
-            <a
+            <SmoothAnchor
               href="#booking"
               className="min-w-28 rounded-full bg-[#D9903D] px-6 py-3 text-center text-xs font-black uppercase tracking-[0.08em] text-white shadow-[0_12px_24px_rgba(217,144,61,0.22)] transition hover:-translate-y-0.5 hover:bg-[#c97f2d] md:min-w-36 md:px-8 md:text-sm"
             >
               Book
-            </a>
+            </SmoothAnchor>
           </div>
         </div>
       </nav>
