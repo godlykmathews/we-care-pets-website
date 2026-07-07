@@ -31,10 +31,11 @@ const rotationDelay = 3200;
 const transitionDuration = 1050;
 
 export default function Hero() {
-  const [frontIndex, setFrontIndex] = useState(0);
-  const [backIndex, setBackIndex] = useState(1);
+  const [slotImages, setSlotImages] = useState([0, 1]);
+  const [frontSlot, setFrontSlot] = useState(0);
   const [isSwapping, setIsSwapping] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const backSlot = frontSlot === 0 ? 1 : 0;
 
   useEffect(() => {
     if (isPaused || isSwapping) {
@@ -46,7 +47,7 @@ export default function Hero() {
     }, rotationDelay);
 
     return () => clearTimeout(timer);
-  }, [frontIndex, isPaused, isSwapping]);
+  }, [frontSlot, isPaused, isSwapping]);
 
   useEffect(() => {
     if (!isSwapping) {
@@ -54,17 +55,20 @@ export default function Hero() {
     }
 
     const timer = setTimeout(() => {
-      setFrontIndex(backIndex);
-      setBackIndex((backIndex + 1) % heroImages.length);
+      setSlotImages((current) => {
+        const updated = [...current];
+        updated[frontSlot] = (current[backSlot] + 1) % heroImages.length;
+        return updated;
+      });
+      setFrontSlot(backSlot);
       setIsSwapping(false);
     }, transitionDuration);
 
     return () => clearTimeout(timer);
-  }, [backIndex, isSwapping]);
+  }, [backSlot, frontSlot, isSwapping]);
 
-  const frontImage = heroImages[frontIndex];
-  const backImage = heroImages[backIndex];
-  const preloadImage = heroImages[(backIndex + 1) % heroImages.length];
+  const preloadImage =
+    heroImages[(slotImages[backSlot] + 1) % heroImages.length];
 
   return (
     <section
@@ -108,28 +112,36 @@ export default function Hero() {
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            <div className="hero-depth-card hero-depth-card-front">
-              <Image
-                key={frontImage.src}
-                src={frontImage.src}
-                alt={frontImage.alt}
-                width={1200}
-                height={900}
-                priority
-                className="hero-depth-image h-full w-full object-cover"
-              />
-            </div>
-            <div className="hero-depth-card hero-depth-card-back">
-              <Image
-                key={backImage.src}
-                src={backImage.src}
-                alt=""
-                aria-hidden
-                width={1000}
-                height={760}
-                className="hero-depth-image h-full w-full object-cover"
-              />
-            </div>
+            {[0, 1].map((slot) => {
+              const image = heroImages[slotImages[slot]];
+              const isFront = slot === frontSlot;
+              const role = isSwapping
+                ? isFront
+                  ? "outgoing"
+                  : "incoming"
+                : isFront
+                  ? "front"
+                  : "back";
+              const isPrimaryImage = role === "front" || role === "incoming";
+
+              return (
+                <div
+                  key={slot}
+                  className={`hero-depth-card hero-depth-card-${role}`}
+                >
+                  <Image
+                    key={image.src}
+                    src={image.src}
+                    alt={isPrimaryImage ? image.alt : ""}
+                    aria-hidden={!isPrimaryImage}
+                    width={1200}
+                    height={900}
+                    priority={slot === 0}
+                    className="hero-depth-image h-full w-full object-cover"
+                  />
+                </div>
+              );
+            })}
             <Image
               src={preloadImage.src}
               alt=""
