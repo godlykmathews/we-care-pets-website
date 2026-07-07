@@ -4,7 +4,10 @@ import SectionHeading from "./SectionHeading";
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="overflow-hidden px-4 py-14 md:px-5 md:py-24">
+    <section
+      id="reviews"
+      className="overflow-hidden bg-white px-4 py-14 md:px-5 md:py-24"
+    >
       <SectionHeading
         eyebrow="Reviews"
         title="Trusted by local pet families."

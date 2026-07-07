@@ -62,4 +62,10 @@ export const streetAddress = [
   businessConfig.address.line2,
 ].join(", ");
 
-export const websiteUrlPlaceholder = "https://TODO-ADD-WEBSITE-URL";
+const configuredSiteUrl =
+  businessConfig.websiteUrl ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.SITE_URL ||
+  "http://localhost:3000";
+
+export const siteUrl = configuredSiteUrl.replace(/\/$/, "");

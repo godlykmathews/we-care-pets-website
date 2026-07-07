@@ -49,7 +49,10 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="overflow-hidden px-4 py-14 md:px-5 md:py-24">
+    <section
+      id="gallery"
+      className="overflow-hidden border-t border-[#E8CFC5] bg-[#FFF1F0] px-4 py-14 shadow-[inset_0_18px_34px_rgba(217,144,61,0.07)] md:px-5 md:py-24"
+    >
       <SectionHeading
         eyebrow="Gallery"
         title="Happy guests at We Care Pets"

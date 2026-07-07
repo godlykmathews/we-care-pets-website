@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import {
-  businessConfig,
-  streetAddress,
-  websiteUrlPlaceholder,
-} from "@/lib/business";
+import { businessConfig, siteUrl, streetAddress } from "@/lib/business";
 import "./globals.css";
-
-const siteUrl = businessConfig.websiteUrl || websiteUrlPlaceholder;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
