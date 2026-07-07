@@ -11,8 +11,8 @@ export default function Footer() {
             <Image
               src="/images/we-care-pets/we-care-pets-logo-mark.png"
               alt="We Care Pets logo"
-              width={112}
-              height={61}
+              width={82}
+              height={96}
               className="h-12 w-auto brightness-0 invert"
             />
             <h2 className="text-3xl font-black">We Care Pets</h2>

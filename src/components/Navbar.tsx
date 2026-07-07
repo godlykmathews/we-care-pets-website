@@ -27,10 +27,10 @@ export default function Navbar() {
             <Image
               src="/images/we-care-pets/we-care-pets-logo-mark.png"
               alt="We Care Pets logo"
-              width={96}
-              height={52}
+              width={82}
+              height={96}
               priority
-              className="h-10 w-auto"
+              className="h-12 w-auto md:h-14"
             />
             <span>We Care Pets</span>
           </a>
