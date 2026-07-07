@@ -35,8 +35,11 @@ export default function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[0.95fr_0.9fr]">
         <div className="min-w-0" data-reveal>
           <h1 className="max-w-4xl text-4xl font-black leading-[1.04] text-[#1F3D36] md:text-6xl">
-            Dog Boarding at{" "}
-            <span className="md:whitespace-nowrap">We Care Pets</span> in
+            Dog Boarding at <br className="md:hidden" />
+            <span className="inline-block whitespace-nowrap">
+              We Care Pets
+            </span>{" "}
+            in
             Eraviperoor, Kerala
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-7 text-[#1C1C1A]/74 md:text-lg md:leading-8">

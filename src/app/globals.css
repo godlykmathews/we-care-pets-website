@@ -156,6 +156,12 @@ section {
   --front-y: 0px;
   --back-x: 5%;
   --back-y: 58px;
+  --side-x: 34%;
+  --side-y: 38px;
+  --side-z: -55px;
+  --hide-right-x: 28%;
+  --hide-left-x: -6%;
+  --hide-y: 74px;
   isolation: isolate;
   perspective: 1200px;
 }
@@ -276,6 +282,11 @@ section {
     --card-width: 64%;
     --front-x: 30%;
     --back-y: 72px;
+    --side-x: 35%;
+    --side-y: 40px;
+    --hide-right-x: 30%;
+    --hide-left-x: -6%;
+    --hide-y: 78px;
   }
 
   .hero-depth-card-front,
@@ -295,6 +306,11 @@ section {
     --card-width: 62%;
     --front-x: 31%;
     --back-y: 78px;
+    --side-x: 36%;
+    --side-y: 42px;
+    --hide-right-x: 31%;
+    --hide-left-x: -6%;
+    --hide-y: 82px;
   }
 }
 
@@ -316,19 +332,22 @@ section {
     box-shadow: 0 14px 30px rgba(31, 61, 54, 0.1);
     filter: saturate(0.92) brightness(0.96);
     opacity: 0.72;
-    transform: translate3d(48%, 44px, -55px) rotate(3deg) scale(0.72);
+    transform: translate3d(var(--side-x), var(--side-y), var(--side-z))
+      rotate(3deg) scale(0.72);
     z-index: 3;
   }
   40%,
   56% {
     opacity: 0;
-    transform: translate3d(40%, 88px, -90px) rotate(4deg) scale(0.62);
+    transform: translate3d(var(--hide-right-x), var(--hide-y), -90px)
+      rotate(4deg) scale(0.62);
     z-index: 1;
   }
   60%,
   76% {
     opacity: 0;
-    transform: translate3d(-8%, 88px, -90px) rotate(-4deg) scale(0.62);
+    transform: translate3d(var(--hide-left-x), var(--hide-y), -90px)
+      rotate(-4deg) scale(0.62);
     z-index: 1;
   }
   80%,
