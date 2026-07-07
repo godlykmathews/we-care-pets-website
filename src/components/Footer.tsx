@@ -1,12 +1,22 @@
 import { business, navItems } from "@/lib/siteData";
 import { businessConfig } from "@/lib/business";
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer className="bg-[#1F3D36] px-4 pb-24 pt-12 text-white md:px-5 md:py-14">
       <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.3fr_0.7fr_0.8fr]">
         <div>
-          <h2 className="text-3xl font-black">We Care Pets</h2>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/images/we-care-pets/we-care-pets-logo-mark.png"
+              alt="We Care Pets logo"
+              width={112}
+              height={61}
+              className="h-12 w-auto brightness-0 invert"
+            />
+            <h2 className="text-3xl font-black">We Care Pets</h2>
+          </div>
           <p className="mt-4 max-w-md leading-7 text-white/72">
             {businessConfig.tagline} Safe dog boarding, day care, and flexible
             short-term and long-term stays in Eraviperoor, Kerala.

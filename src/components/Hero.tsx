@@ -1,25 +1,71 @@
+"use client";
+
 import { business } from "@/lib/siteData";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-const heroCards = [
+const heroImages = [
   {
-    src: "/images/gallery-play.svg",
-    alt: "Happy dog guest at We Care Pets",
-    label: "Happy Stays",
+    src: "/images/we-care-pets/outdoor-cage-facility.webp",
+    alt: "Outdoor cage facility at We Care Pets",
   },
   {
-    src: "/images/gallery-yard.svg",
-    alt: "Outdoor care space at We Care Pets",
-    label: "Outdoor Care",
+    src: "/images/we-care-pets/labrador-personal-care.webp",
+    alt: "Labrador receiving personal care at We Care Pets",
   },
   {
-    src: "/images/gallery-care.svg",
-    alt: "Dog care notes and daily attention at We Care Pets",
-    label: "Personal Care",
+    src: "/images/we-care-pets/husky-indoor-boarding-cage.webp",
+    alt: "Husky guest in an indoor boarding cage at We Care Pets",
+  },
+  {
+    src: "/images/we-care-pets/beagle-cuddle-care.webp",
+    alt: "Beagle guest receiving affectionate care at We Care Pets",
+  },
+  {
+    src: "/images/we-care-pets/golden-retriever-indoor-kennel.webp",
+    alt: "Golden retriever in a clean indoor kennel at We Care Pets",
   },
 ];
 
+const rotationDelay = 3200;
+const transitionDuration = 1050;
+
 export default function Hero() {
+  const [frontIndex, setFrontIndex] = useState(0);
+  const [backIndex, setBackIndex] = useState(1);
+  const [isSwapping, setIsSwapping] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused || isSwapping) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setIsSwapping(true);
+    }, rotationDelay);
+
+    return () => clearTimeout(timer);
+  }, [frontIndex, isPaused, isSwapping]);
+
+  useEffect(() => {
+    if (!isSwapping) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setFrontIndex(backIndex);
+      setBackIndex((backIndex + 1) % heroImages.length);
+      setIsSwapping(false);
+    }, transitionDuration);
+
+    return () => clearTimeout(timer);
+  }, [backIndex, isSwapping]);
+
+  const frontImage = heroImages[frontIndex];
+  const backImage = heroImages[backIndex];
+  const preloadImage = heroImages[(backIndex + 1) % heroImages.length];
+
   return (
     <section
       id="home"
@@ -54,33 +100,50 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div className="relative h-[330px] md:h-[470px]" data-reveal>
-          <div className="hero-poster-stage relative h-full w-full">
-            {heroCards.map((card, index) => (
-              <div
-                key={card.src}
-                className={`hero-poster-card hero-poster-${index}`}
-              >
-                <Image
-                  src={card.src}
-                  alt={card.alt}
-                  width={780}
-                  height={780}
-                  priority={index === 0}
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1F3D36]/70 via-transparent to-transparent" />
-                <p className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-[#1F3D36] shadow-sm">
-                  {card.label}
-                </p>
-              </div>
-            ))}
+        <div className="relative h-[300px] md:h-[470px]" data-reveal>
+          <div
+            className={`hero-depth-stage relative h-full w-full ${
+              isSwapping ? "is-swapping" : ""
+            }`}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="hero-depth-card hero-depth-card-front">
+              <Image
+                key={frontImage.src}
+                src={frontImage.src}
+                alt={frontImage.alt}
+                width={1200}
+                height={900}
+                priority
+                className="hero-depth-image h-full w-full object-cover"
+              />
+            </div>
+            <div className="hero-depth-card hero-depth-card-back">
+              <Image
+                key={backImage.src}
+                src={backImage.src}
+                alt=""
+                aria-hidden
+                width={1000}
+                height={760}
+                className="hero-depth-image h-full w-full object-cover"
+              />
+            </div>
+            <Image
+              src={preloadImage.src}
+              alt=""
+              aria-hidden
+              width={32}
+              height={32}
+              className="pointer-events-none absolute h-px w-px opacity-0"
+            />
           </div>
-          <div className="hero-badge-float absolute left-1 top-7 rounded-2xl border border-[#E8DCCB] bg-white px-4 py-3 shadow-[0_14px_30px_rgba(31,61,54,0.10)] md:left-8 md:top-14">
+          <div className="hero-badge-float absolute left-2 top-8 rounded-2xl border border-[#E8DCCB] bg-white px-4 py-3 shadow-[0_14px_30px_rgba(31,61,54,0.10)] md:left-8 md:top-14">
             <p className="text-sm font-black text-[#1F3D36]">Open 24 hours</p>
             <p className="mt-1 text-sm text-[#1C1C1A]/62">Flexible stays</p>
           </div>
-          <div className="hero-badge-float-alt absolute bottom-9 right-0 rounded-2xl bg-[#1F3D36] px-4 py-3 text-white shadow-[0_16px_35px_rgba(31,61,54,0.22)] md:bottom-12 md:right-3 md:px-5 md:py-4">
+          <div className="hero-badge-float-alt absolute bottom-8 right-0 rounded-2xl bg-[#1F3D36] px-4 py-3 text-white shadow-[0_16px_35px_rgba(31,61,54,0.22)] md:bottom-12 md:right-3 md:px-5 md:py-4">
             <p className="text-sm font-black">Indoor and outdoor</p>
             <p className="mt-1 text-sm text-white/68">Cage facilities</p>
           </div>

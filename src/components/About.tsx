@@ -12,8 +12,8 @@ export default function About() {
           data-reveal
         >
           <Image
-            src="/images/about-care.svg"
-            alt="We Care Pets team preparing a warm boarding space"
+            src="/images/we-care-pets/beagle-cuddle-care.webp"
+            alt="Beagle guest receiving affectionate care from We Care Pets"
             width={1000}
             height={900}
             className="h-64 w-full object-cover md:h-[380px]"

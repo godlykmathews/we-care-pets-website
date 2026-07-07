@@ -41,26 +41,69 @@ export const facilities = [
   {
     title: "Restful Boarding Suites",
     text: "Premium indoor cage facilities give dogs and puppies a secure, clean, and restful place to settle during short-term and long-term stays.",
-    image: "/images/boarding-suite.svg",
+    image: "/images/we-care-pets/golden-retriever-indoor-kennel.webp",
   },
   {
     title: "Secure Play Yard",
     text: "Outdoor cage facilities and open-air care spaces support fresh air, movement, and supervised engagement throughout the stay.",
-    image: "/images/play-yard.svg",
+    image: "/images/we-care-pets/outdoor-cage-facility.webp",
   },
   {
     title: "Calm Care Corners",
     text: "Personalized affection, steady routines, and attentive handling help puppies, seniors, and first-time boarders feel safe.",
-    image: "/images/calm-corner.svg",
+    image: "/images/we-care-pets/beagle-cuddle-care.webp",
   },
 ];
 
 export const galleryItems = [
-  { src: "/images/gallery-play.svg", alt: "Dogs playing in a premium boarding yard" },
-  { src: "/images/gallery-rest.svg", alt: "Comfortable dog rest suite" },
-  { src: "/images/gallery-care.svg", alt: "Staff preparing dog care notes" },
-  { src: "/images/gallery-yard.svg", alt: "Secure outdoor dog boarding yard" },
-  { src: "/images/gallery-lounge.svg", alt: "Indoor dog lounge and enrichment area" },
+  {
+    src: "/images/we-care-pets/beagle-belly-rub.webp",
+    alt: "Beagle guest receiving affectionate belly rub care",
+  },
+  {
+    src: "/images/we-care-pets/husky-indoor-boarding-cage.webp",
+    alt: "Husky resting inside a secure indoor boarding cage",
+  },
+  {
+    src: "/images/we-care-pets/beagle-treat-time.webp",
+    alt: "Beagle guest enjoying a treat during supervised care",
+  },
+  {
+    src: "/images/we-care-pets/puppy-gentle-grooming.webp",
+    alt: "Puppy receiving gentle hands-on care at We Care Pets",
+  },
+  {
+    src: "/images/we-care-pets/smiling-beagle-guest.webp",
+    alt: "Smiling beagle guest during a happy boarding stay",
+  },
+  {
+    src: "/images/we-care-pets/small-dog-indoor-hallway.webp",
+    alt: "Small dog walking through the indoor care area",
+  },
+  {
+    src: "/images/we-care-pets/husky-calm-boarding-room.webp",
+    alt: "Calm husky guest seated in the boarding room",
+  },
+  {
+    src: "/images/we-care-pets/small-dog-blue-crate.webp",
+    alt: "Small dog relaxing inside a clean blue crate",
+  },
+  {
+    src: "/images/we-care-pets/husky-indoor-suite.webp",
+    alt: "Husky guest inside a tiled indoor boarding suite",
+  },
+  {
+    src: "/images/we-care-pets/labrador-cage-suite.webp",
+    alt: "Labrador guest inside a secure cage suite",
+  },
+  {
+    src: "/images/we-care-pets/dog-outdoor-covered-kennel.webp",
+    alt: "Dog resting in a covered outdoor kennel area",
+  },
+  {
+    src: "/images/we-care-pets/labrador-personal-care.webp",
+    alt: "Labrador receiving personal affection through the kennel",
+  },
 ];
 
 export const careFeatures = [
