@@ -1,5 +1,4 @@
 import { business, navItems } from "@/lib/siteData";
-import { businessConfig } from "@/lib/business";
 import Image from "next/image";
 
 export default function Navbar() {
@@ -10,11 +9,6 @@ export default function Navbar() {
           <p>Open 24 hours in Eraviperoor, Kerala</p>
           <div className="flex items-center gap-6">
             <span>Phone: {business.phone || "Coming soon"}</span>
-            <a href="#booking" className="font-bold text-[#F5B35F]">
-              {businessConfig.whatsappNumber
-                ? "WhatsApp enquiry"
-                : "WhatsApp coming soon"}
-            </a>
           </div>
         </div>
       </div>
