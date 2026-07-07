@@ -12,11 +12,11 @@ export default function About() {
           data-reveal
         >
           <Image
-            src="/images/we-care-pets/beagle-cuddle-care.webp"
-            alt="Beagle guest receiving affectionate care from We Care Pets"
+            src="/images/we-care-pets/labrador-personal-care.webp"
+            alt="Labrador receiving personal care from We Care Pets"
             width={1000}
             height={900}
-            className="h-64 w-full object-cover md:h-[380px]"
+            className="h-64 w-full object-cover object-[50%_32%] md:h-[380px]"
           />
         </div>
         <div>
