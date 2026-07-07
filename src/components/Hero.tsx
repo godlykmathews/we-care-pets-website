@@ -1,8 +1,6 @@
 "use client";
 
-import { business } from "@/lib/siteData";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 const heroImages = [
   {
@@ -27,63 +25,18 @@ const heroImages = [
   },
 ];
 
-const rotationDelay = 3200;
-const transitionDuration = 1050;
-
 export default function Hero() {
-  const [slotImages, setSlotImages] = useState([0, 1]);
-  const [frontSlot, setFrontSlot] = useState(0);
-  const [isSwapping, setIsSwapping] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-  const backSlot = frontSlot === 0 ? 1 : 0;
-
-  useEffect(() => {
-    if (isPaused || isSwapping) {
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      setIsSwapping(true);
-    }, rotationDelay);
-
-    return () => clearTimeout(timer);
-  }, [frontSlot, isPaused, isSwapping]);
-
-  useEffect(() => {
-    if (!isSwapping) {
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      setSlotImages((current) => {
-        const updated = [...current];
-        updated[frontSlot] = (current[backSlot] + 1) % heroImages.length;
-        return updated;
-      });
-      setFrontSlot(backSlot);
-      setIsSwapping(false);
-    }, transitionDuration);
-
-    return () => clearTimeout(timer);
-  }, [backSlot, frontSlot, isSwapping]);
-
-  const preloadImage =
-    heroImages[(slotImages[backSlot] + 1) % heroImages.length];
-
   return (
     <section
       id="home"
-      className="relative isolate overflow-hidden px-4 pb-12 pt-28 md:px-5 md:pb-20 md:pt-36"
+      className="paw-pattern relative isolate overflow-hidden px-4 pb-12 pt-28 md:px-5 md:pb-20 md:pt-36"
     >
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(217,144,61,0.14),transparent_28%),radial-gradient(circle_at_86%_18%,rgba(107,143,113,0.18),transparent_30%)]" />
       <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[0.95fr_0.9fr]">
-        <div data-reveal>
-          <p className="mb-4 inline-flex rounded-full border border-[#C9963E] bg-[linear-gradient(135deg,#fffaf0_0%,#ffffff_46%,#f8ead0_100%)] px-3 py-2 text-xs font-black uppercase tracking-[0.08em] text-[#1F3D36] shadow-[0_10px_24px_rgba(201,150,62,0.18),inset_0_1px_0_rgba(255,255,255,0.9)] md:text-sm">
-            Premium dog boarding in {business.location}
-          </p>
+        <div className="min-w-0" data-reveal>
           <h1 className="max-w-4xl text-4xl font-black leading-[1.04] text-[#1F3D36] md:text-6xl">
             Dog Boarding at{" "}
-            <span className="whitespace-nowrap">{business.name}</span> in
+            <span className="md:whitespace-nowrap">We Care Pets</span> in
             Eraviperoor, Kerala
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-7 text-[#1C1C1A]/74 md:text-lg md:leading-8">
@@ -106,52 +59,24 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div className="relative h-[235px] sm:h-[255px] md:h-[370px] lg:h-[395px]" data-reveal>
-          <div
-            className={`hero-depth-stage relative h-full w-full ${
-              isSwapping ? "is-swapping" : ""
-            }`}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            {[0, 1].map((slot) => {
-              const image = heroImages[slotImages[slot]];
-              const isFront = slot === frontSlot;
-              const role = isSwapping
-                ? isFront
-                  ? "outgoing"
-                  : "incoming"
-                : isFront
-                  ? "front"
-                  : "back";
-              const isPrimaryImage = role === "front" || role === "incoming";
-
-              return (
-                <div
-                  key={slot}
-                  className={`hero-depth-card hero-depth-card-${role}`}
-                >
-                  <Image
-                    key={image.src}
-                    src={image.src}
-                    alt={isPrimaryImage ? image.alt : ""}
-                    aria-hidden={!isPrimaryImage}
-                    width={1200}
-                    height={900}
-                    priority={slot === 0}
-                    className="hero-depth-image h-full w-full object-cover"
-                  />
-                </div>
-              );
-            })}
-            <Image
-              src={preloadImage.src}
-              alt=""
-              aria-hidden
-              width={32}
-              height={32}
-              className="pointer-events-none absolute h-px w-px opacity-0"
-            />
+        <div className="relative h-[205px] sm:h-[225px] md:h-[315px] lg:h-[335px]" data-reveal>
+          <div className="hero-depth-stage relative h-full w-full">
+            {heroImages.map((image, index) => (
+              <div
+                key={image.src}
+                className={`hero-depth-card hero-cycle-card hero-cycle-card-${index}`}
+              >
+                <Image
+                  src={image.src}
+                  alt={index === 0 ? image.alt : ""}
+                  aria-hidden={index !== 0}
+                  width={1200}
+                  height={900}
+                  priority={index === 0}
+                  className="hero-depth-image h-full w-full object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

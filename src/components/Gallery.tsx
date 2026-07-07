@@ -2,51 +2,10 @@
 
 import { galleryItems } from "@/lib/siteData";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import SectionHeading from "./SectionHeading";
 
 export default function Gallery() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    if (isPaused) {
-      return;
-    }
-
-    const interval = setInterval(() => {
-      setActiveIndex((index) => (index + 1) % galleryItems.length);
-    }, 2800);
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  const getPosterPosition = (index: number) => {
-    const total = galleryItems.length;
-    const offset = (index - activeIndex + total) % total;
-
-    if (offset === 0) {
-      return "active";
-    }
-
-    if (offset === total - 1) {
-      return "previous";
-    }
-
-    if (offset === 1) {
-      return "next";
-    }
-
-    if (offset === total - 2) {
-      return "far-previous";
-    }
-
-    if (offset === 2) {
-      return "far-next";
-    }
-
-    return "hidden";
-  };
+  const marqueeItems = [...galleryItems, ...galleryItems];
 
   return (
     <section
@@ -59,32 +18,27 @@ export default function Gallery() {
         text="A glimpse of the dogs, cages, care spaces, and happy stays at We Care Pets."
       />
       <div
-        className="gallery-poster-stage relative mx-auto mt-8 h-[320px] max-w-5xl md:h-[390px]"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+        className="gallery-curve-stage mx-auto mt-8 max-w-6xl"
         data-reveal
       >
-        {galleryItems.map((item, index) => {
-          const position = getPosterPosition(index);
-          const isActive = position === "active";
-
-          return (
+        <div className="gallery-curve-track">
+          {marqueeItems.map((item, index) => (
             <figure
-              key={item.src}
-              className={`gallery-poster-card gallery-poster-${position}`}
+              key={`${item.src}-${index}`}
+              className={`gallery-curve-card gallery-curve-card-${index % 5}`}
             >
               <Image
                 src={item.src}
-                alt={isActive ? item.alt : ""}
-                aria-hidden={!isActive}
-                width={780}
-                height={780}
-                className="gallery-poster-image h-full w-full object-cover"
-                priority={index === 0}
+                alt={index < galleryItems.length ? item.alt : ""}
+                aria-hidden={index >= galleryItems.length}
+                width={520}
+                height={420}
+                className="gallery-curve-image h-full w-full object-cover"
+                priority={index < 5}
               />
             </figure>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </section>
   );
