@@ -104,7 +104,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div className="relative h-[300px] md:h-[470px]" data-reveal>
+        <div className="relative h-[235px] sm:h-[255px] md:h-[370px] lg:h-[395px]" data-reveal>
           <div
             className={`hero-depth-stage relative h-full w-full ${
               isSwapping ? "is-swapping" : ""
