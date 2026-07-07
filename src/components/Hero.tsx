@@ -139,14 +139,6 @@ export default function Hero() {
               className="pointer-events-none absolute h-px w-px opacity-0"
             />
           </div>
-          <div className="hero-badge-float absolute left-2 top-8 rounded-2xl border border-[#E8DCCB] bg-white px-4 py-3 shadow-[0_14px_30px_rgba(31,61,54,0.10)] md:left-8 md:top-14">
-            <p className="text-sm font-black text-[#1F3D36]">Open 24 hours</p>
-            <p className="mt-1 text-sm text-[#1C1C1A]/62">Flexible stays</p>
-          </div>
-          <div className="hero-badge-float-alt absolute bottom-8 right-0 rounded-2xl bg-[#1F3D36] px-4 py-3 text-white shadow-[0_16px_35px_rgba(31,61,54,0.22)] md:bottom-12 md:right-3 md:px-5 md:py-4">
-            <p className="text-sm font-black">Indoor and outdoor</p>
-            <p className="mt-1 text-sm text-white/68">Cage facilities</p>
-          </div>
         </div>
       </div>
     </section>
