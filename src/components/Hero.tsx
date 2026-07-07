@@ -59,7 +59,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div className="relative h-[205px] sm:h-[225px] md:h-[315px] lg:h-[335px]" data-reveal>
+        <div className="relative h-[205px] sm:h-[225px] md:h-[265px] lg:h-[285px]" data-reveal>
           <div className="hero-depth-stage relative h-full w-full">
             {heroImages.map((image, index) => (
               <div

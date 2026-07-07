@@ -272,10 +272,10 @@ section {
 
 @media (min-width: 768px) {
   .hero-depth-stage {
-    --card-height: 250px;
-    --card-width: 68%;
-    --front-x: 25%;
-    --back-y: 92px;
+    --card-height: 205px;
+    --card-width: 64%;
+    --front-x: 30%;
+    --back-y: 72px;
   }
 
   .hero-depth-card-front,
@@ -291,10 +291,10 @@ section {
 
 @media (min-width: 1024px) {
   .hero-depth-stage {
-    --card-height: 270px;
-    --card-width: 66%;
-    --front-x: 27%;
-    --back-y: 100px;
+    --card-height: 225px;
+    --card-width: 62%;
+    --front-x: 31%;
+    --back-y: 78px;
   }
 }
 
