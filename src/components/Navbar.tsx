@@ -25,7 +25,7 @@ export default function Navbar() {
             className="flex shrink-0 items-center gap-2 text-lg font-black text-[#1F3D36] md:text-xl"
           >
             <Image
-              src="/images/we-care-pets/we-care-pets-logo-mark.png"
+              src="/images/we-care-pets/we-care-pets-logo-mark-clean.png"
               alt="We Care Pets logo"
               width={82}
               height={96}
