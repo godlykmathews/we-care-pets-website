@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section id="about" className="px-4 py-14 md:px-5 md:py-24">
+    <section id="about" className="paw-pattern overflow-hidden px-4 py-14 md:px-5 md:py-24">
       <div className="mx-auto grid max-w-6xl gap-7 lg:grid-cols-[0.8fr_1fr] lg:items-center">
         <div
           className="overflow-hidden rounded-[1.4rem] border border-[#E8DCCB] bg-white shadow-[0_18px_42px_rgba(31,61,54,0.08)]"

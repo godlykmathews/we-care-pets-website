@@ -37,26 +37,26 @@ export default function Hero() {
         </div>
 
         <div
-          className="relative mx-auto h-[280px] w-full max-w-md sm:h-[340px] lg:h-[470px] lg:max-w-lg"
+          className="hero-image-stage relative mx-auto h-[280px] w-full max-w-md sm:h-[340px] lg:h-[470px] lg:max-w-lg"
           data-reveal
         >
-          <div className="hero-organic-shadow absolute right-0 top-0 h-[78%] w-[72%] overflow-hidden rounded-[2rem]">
+          <div className="hero-image-card hero-image-card-front hero-organic-shadow absolute right-0 top-0 h-[78%] w-[72%] overflow-hidden rounded-[2rem]">
             <Image
               src="/images/we-care-pets/outdoor-cage-facility.webp"
               alt="Outdoor boarding facility at We Care Pets"
               width={1100}
               height={900}
               priority
-              className="h-full w-full object-cover"
+              className="hero-image-zoom h-full w-full object-cover"
             />
           </div>
-          <div className="hero-organic-shadow absolute bottom-4 left-0 h-[60%] w-[64%] overflow-hidden rounded-[2rem] border-4 border-[#FFF8EF]/80 sm:left-7 lg:bottom-8">
+          <div className="hero-image-card hero-image-card-back hero-organic-shadow absolute bottom-4 left-0 h-[60%] w-[64%] overflow-hidden rounded-[2rem] border-4 border-[#FFF8EF]/80 sm:left-7 lg:bottom-8">
             <Image
               src="/images/we-care-pets/labrador-personal-care.webp"
               alt="Labrador receiving personal care at We Care Pets"
               width={1000}
               height={820}
-              className="h-full w-full object-cover"
+              className="hero-image-zoom h-full w-full object-cover"
             />
           </div>
         </div>

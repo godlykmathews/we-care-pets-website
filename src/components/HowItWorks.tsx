@@ -3,7 +3,7 @@ import SectionHeading from "./SectionHeading";
 
 export default function HowItWorks() {
   return (
-    <section className="bg-[#F8EFE3] px-4 py-14 md:px-5 md:py-24">
+    <section className="paw-pattern overflow-hidden bg-[#F8EFE3] px-4 py-14 md:px-5 md:py-24">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
           eyebrow="How It Works"

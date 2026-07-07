@@ -29,7 +29,10 @@ export default function LegalPage({ title, intro, sections }: LegalPageProps) {
         <p className="mt-5 text-lg leading-8 text-[#1C1C1A]/74">{intro}</p>
         <div className="mt-10 space-y-8">
           {sections.map((section) => (
-            <section key={section.heading}>
+            <section
+              key={section.heading}
+              className="paw-pattern overflow-hidden rounded-2xl p-4"
+            >
               <h2 className="text-2xl font-black text-[#1F3D36]">
                 {section.heading}
               </h2>

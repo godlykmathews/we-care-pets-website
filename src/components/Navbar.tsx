@@ -43,9 +43,15 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <SmoothAnchor
               href="#booking"
-              className="min-w-28 rounded-full bg-[#D9903D] px-6 py-3 text-center text-xs font-black uppercase tracking-[0.08em] text-white shadow-[0_12px_24px_rgba(217,144,61,0.22)] transition hover:-translate-y-0.5 hover:bg-[#c97f2d] md:min-w-36 md:px-8 md:text-sm"
+              className="book-cta min-w-32 rounded-full px-5 py-3 text-center text-xs font-black uppercase tracking-[0.08em] text-white md:min-w-40 md:px-7 md:text-sm"
             >
-              Book
+              <span
+                aria-hidden="true"
+                className="book-cta-icon grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/18 ring-1 ring-white/28"
+              >
+                <span className="h-3.5 w-3.5 rounded-[0.2rem] border-2 border-white/95 shadow-[inset_0_4px_0_rgba(255,255,255,0.28)]" />
+              </span>
+              <span className="relative">Book Stay</span>
             </SmoothAnchor>
           </div>
         </div>

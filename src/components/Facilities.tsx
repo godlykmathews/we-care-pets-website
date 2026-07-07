@@ -4,7 +4,10 @@ import SectionHeading from "./SectionHeading";
 
 export default function Facilities() {
   return (
-    <section id="facilities" className="bg-white px-4 py-14 md:px-5 md:py-24">
+    <section
+      id="facilities"
+      className="paw-pattern overflow-hidden bg-white px-4 py-14 md:px-5 md:py-24"
+    >
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Facilities"

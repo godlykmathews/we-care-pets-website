@@ -23,7 +23,7 @@ export default function Gallery() {
         {featuredGalleryItems.map((item, index) => (
           <figure
             key={item.src}
-            className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/80 bg-white shadow-[0_14px_30px_rgba(31,61,54,0.08)]"
+            className="gallery-motion-tile group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/80 bg-white shadow-[0_14px_30px_rgba(31,61,54,0.08)] transition duration-300 active:scale-[0.985]"
           >
             <Image
               src={item.src}

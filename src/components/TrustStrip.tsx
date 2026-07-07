@@ -4,7 +4,7 @@ export default function TrustStrip() {
   const items = [...trustItems, ...trustItems];
 
   return (
-    <section className="overflow-hidden border-y border-[#D9903D]/20 bg-[#1F3D36] py-4 text-[#F5B35F] md:py-5">
+    <section className="paw-pattern overflow-hidden border-y border-[#D9903D]/20 bg-[#1F3D36] py-4 text-[#F5B35F] md:py-5">
       <div className="trust-marquee flex w-max gap-8">
         {items.map((item, index) => (
           <div
