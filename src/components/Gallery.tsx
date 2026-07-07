@@ -23,19 +23,26 @@ export default function Gallery() {
 
   const getPosterPosition = (index: number) => {
     const total = galleryItems.length;
-    const previousIndex = (activeIndex - 1 + total) % total;
-    const nextIndex = (activeIndex + 1) % total;
+    const offset = (index - activeIndex + total) % total;
 
-    if (index === activeIndex) {
+    if (offset === 0) {
       return "active";
     }
 
-    if (index === previousIndex) {
+    if (offset === total - 1) {
       return "previous";
     }
 
-    if (index === nextIndex) {
+    if (offset === 1) {
       return "next";
+    }
+
+    if (offset === total - 2) {
+      return "far-previous";
+    }
+
+    if (offset === 2) {
+      return "far-next";
     }
 
     return "hidden";
