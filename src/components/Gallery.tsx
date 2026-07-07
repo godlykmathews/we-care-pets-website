@@ -5,8 +5,6 @@ import Image from "next/image";
 import SectionHeading from "./SectionHeading";
 
 export default function Gallery() {
-  const marqueeItems = [...galleryItems, ...galleryItems];
-
   return (
     <section
       id="gallery"
@@ -18,27 +16,24 @@ export default function Gallery() {
         text="A glimpse of the dogs, cages, care spaces, and happy stays at We Care Pets."
       />
       <div
-        className="gallery-curve-stage mx-auto mt-8 max-w-6xl"
+        className="gallery-cycle-stage relative mx-auto mt-8 h-[300px] max-w-6xl md:h-[370px]"
         data-reveal
       >
-        <div className="gallery-curve-track">
-          {marqueeItems.map((item, index) => (
-            <figure
-              key={`${item.src}-${index}`}
-              className={`gallery-curve-card gallery-curve-card-${index % 5}`}
-            >
-              <Image
-                src={item.src}
-                alt={index < galleryItems.length ? item.alt : ""}
-                aria-hidden={index >= galleryItems.length}
-                width={520}
-                height={420}
-                className="gallery-curve-image h-full w-full object-cover"
-                priority={index < 5}
-              />
-            </figure>
-          ))}
-        </div>
+        {galleryItems.map((item, index) => (
+          <figure
+            key={item.src}
+            className={`gallery-cycle-card gallery-cycle-card-${index}`}
+          >
+            <Image
+              src={item.src}
+              alt={item.alt}
+              width={520}
+              height={420}
+              className="gallery-cycle-image h-full w-full object-cover"
+              priority={index < 5}
+            />
+          </figure>
+        ))}
       </div>
     </section>
   );
