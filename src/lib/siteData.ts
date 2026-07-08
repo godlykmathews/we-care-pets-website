@@ -55,67 +55,6 @@ export const facilities = [
   },
 ];
 
-const uploadedGalleryItems = Array.from({ length: 37 }, (_, index) => {
-  const imageNumber = String(index + 1).padStart(2, "0");
-
-  return {
-    src: `/images/we-care-pets/gallery/gallery-${imageNumber}.jpeg`,
-    alt: `We Care Pets boarding gallery photo ${index + 1}`,
-  };
-});
-
-export const galleryItems = [
-  ...uploadedGalleryItems,
-  {
-    src: "/images/we-care-pets/beagle-belly-rub.webp",
-    alt: "Beagle guest receiving affectionate belly rub care",
-  },
-  {
-    src: "/images/we-care-pets/husky-indoor-boarding-cage.webp",
-    alt: "Husky resting inside a secure indoor boarding cage",
-  },
-  {
-    src: "/images/we-care-pets/beagle-treat-time.webp",
-    alt: "Beagle guest enjoying a treat during supervised care",
-  },
-  {
-    src: "/images/we-care-pets/puppy-gentle-grooming.webp",
-    alt: "Puppy receiving gentle hands-on care at We Care Pets",
-  },
-  {
-    src: "/images/we-care-pets/smiling-beagle-guest.webp",
-    alt: "Smiling beagle guest during a happy boarding stay",
-  },
-  {
-    src: "/images/we-care-pets/small-dog-indoor-hallway.webp",
-    alt: "Small dog walking through the indoor care area",
-  },
-  {
-    src: "/images/we-care-pets/husky-calm-boarding-room.webp",
-    alt: "Calm husky guest seated in the boarding room",
-  },
-  {
-    src: "/images/we-care-pets/small-dog-blue-crate.webp",
-    alt: "Small dog relaxing inside a clean blue crate",
-  },
-  {
-    src: "/images/we-care-pets/husky-indoor-suite.webp",
-    alt: "Husky guest inside a tiled indoor boarding suite",
-  },
-  {
-    src: "/images/we-care-pets/labrador-cage-suite.webp",
-    alt: "Labrador guest inside a secure cage suite",
-  },
-  {
-    src: "/images/we-care-pets/dog-outdoor-covered-kennel.webp",
-    alt: "Dog resting in a covered outdoor kennel area",
-  },
-  {
-    src: "/images/we-care-pets/labrador-personal-care.webp",
-    alt: "Labrador receiving personal affection through the kennel",
-  },
-];
-
 export const careFeatures = [
   "Indoor cage boarding",
   "Outdoor cage boarding",
