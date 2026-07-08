@@ -13,7 +13,7 @@
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "we-care-pets-website"
+      "service": "we-care-pets-nellimala"
     }
   ],
   "images": {

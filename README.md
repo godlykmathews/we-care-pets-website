@@ -23,6 +23,16 @@ Set `NEXT_PUBLIC_SITE_URL` or `SITE_URL` to the production origin before buildin
 NEXT_PUBLIC_SITE_URL=https://example.com npm run build
 ```
 
+## Deploy on Cloudflare Workers
+
+This app uses `@opennextjs/cloudflare`. Keep the normal Next.js build script as `npm run build`, but set the Cloudflare Workers deploy command to:
+
+```bash
+npm run deploy
+```
+
+Do not use `npx wrangler deploy` as the deploy command for this repo. `npm run deploy` runs the OpenNext build first, which creates the `.open-next` worker output that Wrangler needs.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
