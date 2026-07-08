@@ -1,5 +1,4 @@
 This is the website for We Care Pets, built with Next.js.
-This is the website for We Care Pets, built with Next.js.
 
 ## Getting Started
 
@@ -31,7 +30,16 @@ This app uses `@opennextjs/cloudflare`. Keep the normal Next.js build script as 
 npm run deploy
 ```
 
-Do not use `npx wrangler deploy` as the deploy command for this repo. `npm run deploy` runs the OpenNext build first, which creates the `.open-next` worker output that Wrangler needs.
+If the Cloudflare Workers build pipeline is configured as separate commands, use:
+
+```bash
+npm run build
+npx wrangler deploy
+```
+
+The `postbuild` hook adapts the completed Next.js build into `.open-next`, which is the worker output that Wrangler needs. For local manual deployments, `npm run deploy` runs the full OpenNext build and deploy flow.
+
+Use `npm run build:next` when you only want the raw Next.js build without the OpenNext adapter step.
 
 ## Learn More
 
