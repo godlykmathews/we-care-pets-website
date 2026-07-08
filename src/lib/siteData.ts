@@ -46,12 +46,12 @@ export const facilities = [
   {
     title: "Secure Play Yard",
     text: "Outdoor cage facilities and open-air care spaces support fresh air, movement, and supervised engagement throughout the stay.",
-    image: "/images/we-care-pets/outdoor-cage-facility.webp",
+    image: "/images/we-care-pets/indoor.jpeg",
   },
   {
     title: "Calm Care Corners",
     text: "Personalized affection, steady routines, and attentive handling help puppies, seniors, and first-time boarders feel safe.",
-    image: "/images/we-care-pets/beagle-cuddle-care.webp",
+    image: "/images/we-care-pets/outdoor.jpeg",
   },
 ];
 
