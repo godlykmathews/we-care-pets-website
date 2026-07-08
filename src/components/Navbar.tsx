@@ -1,6 +1,12 @@
 import { business, navItems } from "@/lib/siteData";
 import Image from "next/image";
 import SmoothAnchor from "./SmoothAnchor";
+import dynamic from "next/dynamic";
+
+const CalendarMonthIcon = dynamic(
+  () => import("@mui/icons-material/CalendarMonth"),
+  { ssr: false },
+);
 
 export default function Navbar() {
   return (
@@ -47,9 +53,9 @@ export default function Navbar() {
             >
               <span
                 aria-hidden="true"
-                className="book-cta-icon grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/18 ring-1 ring-white/28"
+                className="book-cta-icon grid h-7 w-7 shrink-0 place-items-center rounded-full"
               >
-                <span className="h-3.5 w-3.5 rounded-[0.2rem] border-2 border-white/95 shadow-[inset_0_4px_0_rgba(255,255,255,0.28)]" />
+                <CalendarMonthIcon className="h-5 w-5 text-white" />
               </span>
               <span className="relative">Book Stay</span>
             </SmoothAnchor>
