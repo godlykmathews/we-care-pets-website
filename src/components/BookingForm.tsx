@@ -27,18 +27,46 @@ const initialDetails: BookingDetails = {
 const fieldClass =
   "w-full rounded-2xl border border-[#D8CDC0] bg-white px-4 py-4 text-base font-bold text-[#1C1C1A] outline-none transition placeholder:text-[#1C1C1A]/36 focus:border-[#6B8F71] focus:bg-white focus:shadow-[0_0_0_4px_rgba(107,143,113,0.14)]";
 
+function cleanMessageValue(value: string) {
+  return value.trim().replace(/\s+/g, " ") || "-";
+}
+
+function formatDateForMessage(value: string) {
+  if (!value) {
+    return "-";
+  }
+
+  const [year, month, day] = value.split("-").map(Number);
+
+  if (!year || !month || !day) {
+    return value;
+  }
+
+  return new Intl.DateTimeFormat("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(new Date(year, month - 1, day));
+}
+
 export function createWhatsAppMessage(details: BookingDetails) {
   return [
-    "Dog Boarding Enquiry - We Care Pets",
-    `Owner: ${details.ownerName || "-"}`,
-    `Phone: ${details.phone || "-"}`,
-    `Dog: ${details.dogName || "-"}`,
-    `Breed or size: ${details.breedSize || "-"}`,
-    `Drop-off: ${details.dropOffDate || "-"}`,
-    `Pick-up: ${details.pickUpDate || "-"}`,
-    `Note: ${details.note || "-"}`,
-    "Please confirm availability and pricing.",
-  ].join(" | ");
+    "Hi We Care Pets,",
+    "",
+    "I would like to enquire about dog boarding.",
+    "",
+    "*Booking Details*",
+    `- Owner name: ${cleanMessageValue(details.ownerName)}`,
+    `- Phone number: ${cleanMessageValue(details.phone)}`,
+    `- Dog name: ${cleanMessageValue(details.dogName)}`,
+    `- Breed / size: ${cleanMessageValue(details.breedSize)}`,
+    `- Drop-off date: ${formatDateForMessage(details.dropOffDate)}`,
+    `- Pick-up date: ${formatDateForMessage(details.pickUpDate)}`,
+    `- Care notes: ${cleanMessageValue(details.note)}`,
+    "",
+    "Please confirm availability and pricing for these dates.",
+    "Thank you.",
+  ].join("\n");
 }
 
 function createWhatsAppUrl(details: BookingDetails) {
