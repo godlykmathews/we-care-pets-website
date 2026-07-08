@@ -55,7 +55,17 @@ export const facilities = [
   },
 ];
 
+const uploadedGalleryItems = Array.from({ length: 37 }, (_, index) => {
+  const imageNumber = String(index + 1).padStart(2, "0");
+
+  return {
+    src: `/images/we-care-pets/gallery/gallery-${imageNumber}.jpeg`,
+    alt: `We Care Pets boarding gallery photo ${index + 1}`,
+  };
+});
+
 export const galleryItems = [
+  ...uploadedGalleryItems,
   {
     src: "/images/we-care-pets/beagle-belly-rub.webp",
     alt: "Beagle guest receiving affectionate belly rub care",

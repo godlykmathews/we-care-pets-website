@@ -2,8 +2,6 @@ import { galleryItems } from "@/lib/siteData";
 import Image from "next/image";
 import SectionHeading from "./SectionHeading";
 
-const featuredGalleryItems = galleryItems.slice(0, 6);
-
 export default function Gallery() {
   return (
     <section
@@ -20,7 +18,7 @@ export default function Gallery() {
         className="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3"
         data-reveal
       >
-        {featuredGalleryItems.map((item, index) => (
+        {galleryItems.map((item, index) => (
           <figure
             key={item.src}
             className="gallery-motion-tile group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/80 bg-white shadow-[0_14px_30px_rgba(31,61,54,0.08)] transition duration-300 active:scale-[0.985]"
