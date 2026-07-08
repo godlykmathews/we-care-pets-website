@@ -2,7 +2,14 @@ import { businessConfig } from "@/lib/business";
 import Image from "next/image";
 
 const quickEnquiryMessage = encodeURIComponent(
-  "Hi We Care Pets, I have a quick enquiry about dog boarding. Please share availability and details.",
+  [
+    "Hi We Care Pets,",
+    "",
+    "I have a quick enquiry about dog boarding.",
+    "",
+    "Please share availability, pricing, and booking details.",
+    "Thank you.",
+  ].join("\n"),
 );
 
 export default function FloatingWhatsApp() {
