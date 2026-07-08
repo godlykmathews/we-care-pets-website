@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
-  "name": "we-care-pets-nellimala",
+  "name": "we-care-pets-website",
   "compatibility_date": "2026-07-08",
   "compatibility_flags": [
     "nodejs_compat"
