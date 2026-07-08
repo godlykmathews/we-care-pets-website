@@ -643,9 +643,6 @@ section {
     transform: none;
   }
 
-  body {
-    padding-bottom: 72px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
