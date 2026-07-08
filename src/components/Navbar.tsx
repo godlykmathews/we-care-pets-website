@@ -1,3 +1,5 @@
+"use client";
+
 import { business, navItems } from "@/lib/siteData";
 import Image from "next/image";
 import SmoothAnchor from "./SmoothAnchor";
